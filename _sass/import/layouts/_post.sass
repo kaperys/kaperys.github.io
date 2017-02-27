@@ -1,0 +1,32 @@
+.post-layout
+	header
+		background:
+			color: transparent
+			size: cover
+			repeat: no-repeat
+			image: url('../img/background/main.jpg')
+		margin-bottom: 2rem
+		border-bottom: 1px solid #6F6F6F
+
+		.title
+			margin: 2rem 0 2rem 0
+			color: $white
+
+	.body
+		a
+			border-bottom: 1px dotted $black
+			color: lighten($black, 20%)
+			transition: color 300ms ease-in
+
+			&:hover
+				color: $black
+
+		.notice
+			background-color: $red
+			padding: 1em
+
+			p:first-of-type
+				margin-top: 0
+
+	.comments
+		margin-top: 2rem

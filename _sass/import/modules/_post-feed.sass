@@ -1,0 +1,64 @@
+.post-feed
+	@include clearfix
+	animation-name: slideIn
+	animation-iteration-count: 1
+	animation-timing-function: ease-in
+	animation-duration: 1s
+
+	.slick-arrow
+		transition: opacity 200ms ease-in
+
+		&.slick-disabled
+			opacity: 0
+			pointer-events: none
+
+	.feed-article
+		display: inline-block
+		width: 33.333%
+		float: left
+		border: 1px solid transparentize($white, 0.5)
+		border-bottom: 0
+		padding: 1rem
+		margin: 1rem
+		transition: background-color 200ms ease-in
+		height: 14rem
+
+		&:hover
+			background-color: transparentize($white, 0.97)
+
+		&.read-more
+			background-color: $white
+			position: relative
+			transition: all 200ms ease-in
+
+			p
+				color: $black
+				font:
+					family: $header-font
+					size: 1.4rem
+					weight: 400
+				text:
+					align: center
+					transform: uppercase
+				position: absolute
+				top: 50%
+				left: 50%
+				transform: translate(-50%, -50%)
+				margin: 0
+
+			&:hover
+				background-color: transparentize($white, 0.1)
+				border-color: transparentize($white, 0.1)
+
+		.title
+			color: $white
+			text-transform: uppercase
+			margin: 0 0 1rem 0
+			font:
+				family: $header-font
+				size: 1.4rem
+				weight: 400
+
+		.body
+			color: $white
+			font-size: 0.8rem
