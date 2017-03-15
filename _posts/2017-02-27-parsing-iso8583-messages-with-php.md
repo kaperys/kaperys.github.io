@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  PHP ISO8583 parsing
-summary: Recently I've needed a library to pack and unpack ISO8583 formatted messages, but there are very few PHP libraries to do this. I got frustrated, so created my own.
+title:  Parsing ISO8583 messages with PHP
+summary: Recently I've needed a PHP library to pack and unpack ISO8583 formatted messages, but there seems to be very few around. I got frustrated, and so created my own.
 ---
 
 At work recently we've needed some way to easily pack and unpack ISO8583 formatted messages to integrate with PayPoint. You might assume there would be an abundance of open-source packages, right? Wrong. There is very, very few.
