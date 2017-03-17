@@ -6,6 +6,8 @@ description: "Sheffield based PHP developer"
 baseurl: "/"
 url: "https://kaperys.io"
 
+permalink: pretty
+
 highlighter: none
 markdown: kramdown
 kramdown:

@@ -6,10 +6,14 @@ order: 3
 layout: blog
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-<ul>
+<ul class="blog-posts-feed">
   {% for post in site.posts %}
-    <li><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
+    <li class="post-item">
+      <a href="{{ post.url }}" title="{{ post.title }}">
+        <p class="post-date">{{ post.date | date_to_long_string }}</p>
+        <p class="post-title">{{ post.title }}</p>
+        <p class="post-summary">{{ post.summary }}</p>
+      </a>
+    </li>
   {% endfor %}
 </ul>
