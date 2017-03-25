@@ -2,19 +2,20 @@ title: Mike Kaperys
 email: mike@kaperys.io
 author: Mike Kaperys <mike@kaperys.io>
 
-description: "Sheffield based PHP developer"
+description: "Sheffield based software engineer"
 baseurl: "/"
 url: "https://kaperys.io"
 
 permalink: pretty
 
-highlighter: none
+highlighter: rouge
 markdown: kramdown
 kramdown:
   syntax_highlighter_opts:
     disable : true
 
 sass:
+ sass_dir: _sass
  style: compressed
 
 gems:
