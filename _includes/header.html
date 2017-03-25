@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en-gb" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+    <meta name="description" content="{{ site.description }}">
+    <meta name="author" content="{{ site.author }}">
+    <!--[if lt IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+      <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Abel%7CMuli:300,400">
+    <link rel="stylesheet" href="{{ "/css/app.css" | prepend: site.url }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ "/favicon.ico" | prepend: site.url }}">
+  </head>
+  <body>
+
+		<header id="header">
+
+			<div class="wrap">
+
+				<div class="logo">
+					<a href="/" title="Mike Kaperys">
+						<h1>Mike Kaperys</h1>
+					</a>
+				</div>
+
+				<nav>
+        	<ul>
+            {% assign sorted_pages = site.pages | sort:"order" %}
+            {% for page in sorted_pages %}
+              {% if page.navigation %}
+                <li><a href="{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a></li>
+              {% endif %}
+            {% endfor %}
+
+        		<li class="mobile-toggle"><p>&#9776; Menu</p></li>
+        	</ul>
+        </nav>
+
+			</div>
+
+		</header>

@@ -1,0 +1,38 @@
+{% include header.html %}
+
+  <div class="home-layout">
+
+      <div class="hero">
+
+        <div class="default-body">
+
+          <h2 class="title">{{ page.heading }}</h2>
+
+          <div class="body">
+            <p>{{ page.subheading }}</p>
+          </div>
+        </div>
+
+        <div class="post-feed slider slider-outer-arrows" id="home-blog-feed">
+
+          {% for post in site.posts %}
+            <a href="{{ post.url }}" title="{{ post.title }}" class="feed-article slide">
+              <h3 class="title">{{ post.title }}</h3>
+
+              <div class="body">
+                {{ post.summary }}
+              </div>
+            </a>
+          {% endfor %}
+
+          <a href="/blog" title="Read More" class="feed-article slide read-more">
+            <p>Read More</p>
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+{% include footer.html %}

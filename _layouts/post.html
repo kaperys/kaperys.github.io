@@ -1,0 +1,32 @@
+{% include header.html %}
+
+  <div class="default-body post-layout">
+    <header class="push-header">
+      <div class="wrap">
+        <p class="title">{{ page.title }}</p>
+      </div>
+    </header>
+
+    <div class="body">
+      <div class="wrap">
+        {{ content }}
+      </div>
+    </div>
+
+    <footer>
+      <div class="wrap">
+        <div id="disqus_thread"></div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://kaperys.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+
+{% include footer.html %}

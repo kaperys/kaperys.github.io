@@ -1,15 +1,13 @@
 ---
-layout: page
 title: About
-permalink: /about/
+navigation: true
+order: 2
+
+layout: page
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+I'm Mike Kaperys. I'm a software engineer from Sheffield, England.
 
-You can find the source code for the Jekyll new theme at:
-{% include icon-github.html username="jekyll" %} /
-[minima](https://github.com/jekyll/minima)
+I currently work for [U Account](https://uaccount.uk), a Sheffield based un-bank.
 
-You can find the source code for Jekyll at
-{% include icon-github.html username="jekyll" %} /
-[jekyll](https://github.com/jekyll/jekyll)
+You can see my work on [GitHub](https://github.com/kaperys), and follow me on [Twitter](https://twitter.com/kaperys).
