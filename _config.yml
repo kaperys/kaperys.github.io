@@ -19,8 +19,6 @@ sass:
 
 gems:
   - jekyll-feed
-  - bourbon
-  - neat
 
 exclude:
   - Gemfile
