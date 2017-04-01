@@ -1,6 +1,6 @@
 #header
 	padding: 1rem 0 1rem 0
-	transition: background-color 200ms ease-in
+	transition: all 200ms ease-in
 	position: fixed
 	top: 0
 	left: 0
@@ -12,6 +12,14 @@
 
 	&.tinted
 		background-color: transparentize($black, 0.2)
+		padding: .2rem 0 .2rem 0
+
+		@media screen and (max-width: 890px)
+			.logo a h1
+				font-size: 0.4rem
+
+			nav ul li a, nav ul li p
+				padding: .6rem 1rem .6rem 1rem
 
 	.logo
 		@include span-columns(4)
@@ -32,6 +40,7 @@
 					repeat: no-repeat
 					image: url('../img/general/logo.png')
 				padding-top: 1.6rem
+				transition: font-size 200ms ease-in
 
 	nav
 		@include span-columns(8)
@@ -85,6 +94,7 @@
 					margin: 1rem
 					color: $white
 					text-transform: uppercase
+					transition: padding 200ms ease-in
 					font:
 						family: $header-font
 						size: 1.2rem

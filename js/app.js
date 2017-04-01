@@ -22,7 +22,7 @@
     function headerTint() {
         var $header = $('#header');
 
-        if($header.offset().top > ($header.height() / 2)) {
+        if($header.offset().top > ($header.height() / 4)) {
             $header.addClass('tinted');
         } else {
             $header.removeClass('tinted');
