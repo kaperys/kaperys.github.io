@@ -6,7 +6,7 @@ summary: GitHub pages doesn't offer SSL when using a custom domain with your web
 
 GitHub pages do not offer SSL when you use a custom domain, like they do when using the default &#42;.github.io subdomain. If, like me, you want your website served over HTTPS while using a custom domain with GH pages, then while it is possible, there are a few hoops to jump through.
 
-I'm going to assume you already have your custom domain set up and are serving your GH pages hosted website on your custom domian. If not, GitHub have some [pretty good docs](https://help.github.com/articles/using-a-custom-domain-with-github-pages/) on how to set this set up.
+I'm going to assume you already have your custom domain set up and are serving your GH pages hosted website on your custom domain. If not, GitHub have some [pretty good docs](https://help.github.com/articles/using-a-custom-domain-with-github-pages/) on how to set this set up.
 
 Firstly, if you don't already have one, you'll need to sign up for a [CloudFlare](https://www.cloudflare.com/a/sign-up) account. Follow the instructions to setup your domain with CloudFlare. During the setup process, CloudFlare will scan your existing DNS records and mirror them in your profile. You can them choose which DNS records should push traffic through CloudFlare and which should bypass. At the end of this process you'll need to change your domains nameservers.
 
