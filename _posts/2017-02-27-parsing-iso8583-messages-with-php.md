@@ -1,32 +1,28 @@
 ---
 layout: post
-title:  Parsing ISO-8583 messages with PHP
-summary: Recently I've needed a PHP library to pack and unpack ISO-8583 formatted messages, but there seems to be very few around. I got frustrated, and so created my own.
+title:  Parsing ISO8583:1987 messages with PHP
+summary: Recently I needed a PHP library capable of packing and unpacking ISO8583:1987 formatted messages, but there seems to be very few around, so I created my own.
 ---
 
-I recently released an open-source PHP ISO-8583 pack/unpack library called [financial](https://github.com/kaperys/financial). This post is an introduction to the library and covers the basics of usage and integration.
+Recently I needed a PHP library capable of parsing ISO8583:1987 formatted messages and quickly found that there aren't many around. I needed something which could accept a hexadecimal ISO8583:1987 message, and give me back some kind of Transaction representation. I ended up releasing my own library called [financial](https://github.com/kaperys/financial).
 
 ## What is it?
-Financial is a simple PHP pack/unpack library for parsing ISO-8583 formatted hexadecimal messages.
+
+Financial is an open source ISO8583:1987 parsing library for PHP capable of reading and writing transaction messages.
 
 ## What does it do?
-The library allows the user to simply pack and unpack messages to and from 'schema' classes. A schema describes the fields contained in the message, their data types, display, length and more.
 
-### Unpack
-The user can unpack the message to the schema class then call methods on the schema to retrieve data from the message. The user can easily find which fields are set on the schema by calling `$schema->getSetFields()` this will return an array of the fields set. The library also returns a `MessageTypeIdentifier` class, which allows the user to easily identify the MTI (message type identifier) of the message. The `MessageTypeIdentifier` class has helpful methods such as `getClass()` and `getVersion()`.
-
-### Pack
-The user can pack the message by creating a new instance of the schema class and setting methods on it using the `SchemaManager`. The `SchemaManager` is responsible for validating the data to be set on the schema, as well as keeping track of the fields set on it. The `SchemaManager` can then be passed into the `MessagePacker` to be parsed to a hexadecimal ISO-8583 string.
-
-## How do I use it?
-The full documentation can be found on [GitHub](https://github.com/kaperys/financial/tree/master/doc).
+Financial allows you to pack and unpack messages to and from 'schema' classes. A schema describes the fields present in the message, their data types, display, length and more. Using a schema is how you can interact with the transaction message.
 
 ### Unpacking
+You can unpack the message to a schema class and then call methods on the schema to retrieve data from the message. You can easily discover which fields are set on the schema by calling `$schema->getSetFields()`. This will return an array of the fields set. Financial also returns a `MessageTypeIdentifier` class, which allows you to identify the MTI (message type identifier) of the message. The `MessageTypeIdentifier` class has helpful methods such as `getClass()` and `getVersion()`.
+
+#### Example
 ```php
 $cacheManager = new CacheManager();
 $cacheManager->generateSchemaCache(new ISO8583());
 
-/** @var ISO8583 $schemaManager */
+/** @var ISO8583|SchemaManager $schemaManager */
 $schemaManager = new SchemaManager(new ISO8583(), $cacheManager);
 
 /** @var MessageUnpacker $message */
@@ -43,11 +39,15 @@ echo $schema->getCardAcceptorNameLocation();
 ```
 
 ### Packing
+You can pack the message by creating a new instance of the schema class and setting methods on it using the `SchemaManager`. The `SchemaManager` can then be passed into the `MessagePacker` class and parsed to an ISO8583:1987 hexadecimal string.
+
+
+#### Example
 ```php
 $cacheManager = new CacheManager();
 $cacheManager->generateSchemaCache(new ISO8583());
 
-/** @var ISO8583 $schemaManager */
+/** @var ISO8583|SchemaManager $schemaManager */
 $schemaManager = new SchemaManager(new ISO8583(), $cacheManager);
 
 $schemaManager->setCurrencyCodeCardholderBilling('GBP');
