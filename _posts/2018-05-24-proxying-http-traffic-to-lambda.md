@@ -4,9 +4,9 @@ title:  Proxying HTTP traffic to a Go Lambda function
 summary: Sometimes when you're developing Lambda functions it's nice to have a simple way to mock API Gateway's Lambda proxy. Here's how you could do this.
 ---
 
-Sometimes when you're developing Lambda functions it nice to have some kind of tool to send an actual RPC to the function, in place of API Gateway's Lambda proxy. I would always suggest using unit tests for the greatest reliability when testing your Lambda, however for the purposes of integration testing it's nice to be able to proxy your HTTP requests to your Lambda's RPC.
+Sometimes when you're developing a Lambda function it nice to have some kind of tool to send an actual RPC to the function, in place of API Gateway's Lambda proxy. I would always suggest using unit tests for the greatest reliability when testing your Lambda, however for the purposes of alpha testing it's nice to be able to proxy HTTP requests to your Lambda's RPCs.
 
-**Disclaimer:** I know awslabs already have a great tool for this. In my case though, setting up a framework and implementing my own request and response types was a little overkill. If you're looking for something to use regularly to send HTTP traffic to your Lambda definitely check out [https://github.com/awslabs/aws-lambda-go-api-proxy](https://github.com/awslabs/aws-lambda-go-api-proxy).
+**Disclaimer:** awslabs have a great tool for this. In my case though, setting up a framework and implementing my own request and response types was a little overkill. If you're looking for something to use regularly to send HTTP traffic to your Lambda definitely check out [https://github.com/awslabs/aws-lambda-go-api-proxy](https://github.com/awslabs/aws-lambda-go-api-proxy).
 
 ## Your Lambda function
 
@@ -39,7 +39,7 @@ Where "TIn" and "TOut" are types compatible with the "encoding/json" standard li
 
 When you use API Gateway to invoke a Lambda function, the API Gateway Lambda proxy makes an RPC to `Function.Invoke`, passing an [`InvokeRequest`](https://godoc.org/github.com/aws/aws-lambda-go/lambda/messages#InvokeRequest) into the call. Most properties of the `InvokeRequest` are populated by API Gateway. The `Payload` property is populated with the request body sent to API Gateway.
 
-When API Gateway calls the `Function.Invoke` method, the `InvokeRequest` type is converted to an [`APIGatewayProxyRequest`](https://godoc.org/github.com/aws/aws-lambda-go/events#APIGatewayProxyRequest) (the `InvokeRequest` isn't literally converted to this type, just a type that has the same structure). The `APIGatewayProxyRequest` type contains all the information from the original `InvokeRequest` and more. The `APIGatewayProxyRequest` type is passed to your Lambda's Handler function as `TIn`.
+When API Gateway calls the `Function.Invoke` method, the `InvokeRequest` type is converted to an [`APIGatewayProxyRequest`](https://godoc.org/github.com/aws/aws-lambda-go/events#APIGatewayProxyRequest) (the `InvokeRequest` isn't literally converted to this type, just a type that has the same structure). The `APIGatewayProxyRequest` type contains all the information from the original `InvokeRequest` and more. The `APIGatewayProxyRequest` type is passed to your Lambda's Handler function in place of `TIn`.
 
 Once your Lambda has completed, you should return an [`APIGatewayProxyResponse`](https://godoc.org/github.com/aws/aws-lambda-go/events#APIGatewayProxyResponse) (you don't have to literally return this type, just a type that has the same structure). The `APIGatewayProxyResponse` is converted to an [`InvokeResponse`](https://godoc.org/github.com/aws/aws-lambda-go/lambda/messages#InvokeResponse). API Gateway responds to the original HTTP request with `InvokeResponse.Payload`, assuming there was no error.
 
