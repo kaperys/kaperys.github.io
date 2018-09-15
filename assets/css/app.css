@@ -44,42 +44,65 @@ header h2 {
     font-size: 1.4rem;
 }
 
-.body {
+section {
     background-color: #ffffff;
     margin: -4rem 0 0 0;
     padding: 2rem 4rem 2rem 4rem;
     box-shadow: 0 0 60px 0 rgba(0, 0, 0, .08);
     z-index: 2;
     position: relative;
+    display: flex;
 }
 
-.body p {
+section h3 {
+    color: #8e6060;
+    text-transform: uppercase;
+    letter-spacing: 1rem;
+    font-weight: 200;
+    font-size: 1.4rem;
+}
+
+section .bio {
+    flex: 20%;
+}
+
+section .bio .avatar {
+    max-width: 100%;
+    border-radius: 50%;
+    border: 1px solid #ececec;
+    box-shadow: 0 0 60px 0 rgba(0, 0, 0, .08);
+}
+
+section .introduction {
+    flex: 80%;
+    padding-left: 4rem;
+}
+
+section p {
     color: #383838;
     font-weight: 400;
 }
 
-.body p a {
+section p a {
     color: #8e6060;
     text-decoration: none;
 }
 
-.body p a:hover {
-    color: #c76363;
+section p a:hover {
+    color: #3882a5;
 }
 
-body ul.links {
-    list-style-type: none;
+section .bio ul.links {
+    list-style: none;
     margin: 2rem 0 0 0;
     padding: 0;
+}
+
+section .bio ul.links li {
     text-align: center;
 }
 
-body ul.links li {
-    display: inline-block;
-    padding: 0 2rem 0 2rem;
-}
-
-body ul.links li p {
+section .bio ul.links li p {
     text-transform: uppercase;
     font-size: 0.8rem;
     letter-spacing: 0.2rem;
@@ -103,6 +126,12 @@ footer p {
     margin: 0 auto;
 }
 
+@media only screen and (max-width: 1440px) {
+    .wrap {
+        width: 80%;
+    }
+}
+
 @media only screen and (max-width: 860px) {
     header h1 {
         font-size: 4rem;
@@ -114,5 +143,60 @@ footer p {
 
     .wrap {
         width: 80%;
+    }
+}
+
+@media only screen and (max-width: 740px) {
+    section {
+        flex-direction: row-reverse;
+        flex-wrap: wrap-reverse;
+    }
+
+    section .bio {
+        flex: 100%;
+        order: 1;
+    }
+
+    section .bio .avatar {
+        display: none;
+    }
+
+    section .bio ul.links {
+        text-align: center;
+    }
+
+    section .bio ul.links li {
+        display: inline-block;
+        padding: 0 1rem 0 1rem;
+    }
+
+    section .introduction {
+        flex: 100%;
+        order: 2;
+        padding: 0 0 0 0;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    section {
+        padding: 1rem 2rem 1rem 2rem;
+    }
+    
+    section .bio ul.links li {
+        padding: 0 .4rem 0 .4rem;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    header h1 {
+        font-size: 3rem;
+    }
+
+    header h2 {
+        font-size: 1rem;
+    }
+
+    .wrap {
+        width: 90%;
     }
 }
