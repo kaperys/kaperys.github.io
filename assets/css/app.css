@@ -12,7 +12,7 @@ body {
 }
 
 header {
-    background-image: linear-gradient(120deg, #fd2727 0%, #1fa9e8 100%);
+    background-image: linear-gradient(90deg, #3e0f0f 10%, #1f9fda 100%);
     padding: 6rem 0 10rem 0;
     text-align: center;
     box-shadow: 0 0 60px 0 rgba(0, 0, 0, .08);
@@ -55,7 +55,7 @@ section {
 }
 
 section h3 {
-    color: #ce5555;
+    color: #3e0f0f;
     text-transform: uppercase;
     letter-spacing: 1rem;
     font-weight: 200;
@@ -75,34 +75,38 @@ section .introduction {
     padding-left: 4rem;
 }
 
+section .introduction ul.links {
+    list-style: none;
+    padding: 0;
+}
+
+section .introduction ul.links li {
+    display: inline-block;
+    margin-right: 1rem;
+}
+
+section .introduction ul.links li:last-of-type {
+    margin-right: 0;
+}
+
+section .introduction ul.links li p {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.2rem;
+}
+
 section p {
     color: #383838;
     font-weight: 400;
 }
 
 section p a {
-    color: #ce5555;
+    color: #3e0f0f;
     text-decoration: none;
 }
 
 section p a:hover {
-    color: #3f7e9a;
-}
-
-section .bio ul.links {
-    list-style: none;
-    margin: 2rem 0 0 0;
-    padding: 0;
-}
-
-section .bio ul.links li {
-    text-align: center;
-}
-
-section .bio ul.links li p {
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    letter-spacing: 0.2rem;
+    color: #1f9fda;
 }
 
 footer {
