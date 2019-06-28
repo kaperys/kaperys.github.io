@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "An introduction to serverless Go applications using AWS"
-summary: "Serverless has always been a bit of a buzzword and seems to be the trend at the moment — probably justifiably. In this post we'll discuss building serverless Go functions, testing, configuration and deployment to AWS."
+summary: "Serverless has always been a bit of a buzzword and seems to be the trend at the moment - probably justifiably. In this post we'll discuss building serverless Go functions, testing, configuration and deployment to AWS."
 date: 2018-11-10
 ---
 
@@ -11,11 +11,11 @@ date: 2018-11-10
 
 ## What is serverless?
 
-Serverless is essentially an on-demand execution model for computing workloads, which is supported by many cloud providers — such as AWS, Azure and Google Cloud.
+Serverless is essentially an on-demand execution model for computing workloads, which is supported by many cloud providers - such as AWS, Azure and Google Cloud.
 
 _Serverless doesn't mean that there are no servers involved._
 
-Serverless functions are exactly what they sound like — functions which run on-demand on a cloud provider's platform.
+Serverless functions are exactly what they sound like  - functions which run on-demand on a cloud provider's platform.
 
 Typically an interface is provided for developers to upload their code and the cloud provider takes care of the rest. The cloud provider manages hosting and execution of the code, resource allocation, auto-scaling, logging, metrics, security (somewhat) and more. You're (usually) only billed for the time your application is actually running.
 
@@ -186,7 +186,7 @@ AWS SAM CLI is a tool provided by AWS for development and deployment (amongst [o
 
 AWS SAM CLI is available for Windows, Mac and Linux and requires Docker, the AWS CLI and Python Pip to be installed. There are [installation instructions](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html) for SAM CLI available on AWS' website.
 
-There are two SAM CLI commands that we could use to test our function — the [`start-api`](https://github.com/kaperys/blog/blob/master/serverless-go-intro/Makefile#L19) command and the [`invoke`](https://github.com/kaperys/blog/blob/master/serverless-go-intro/Makefile#L22) command (there are [more commands available](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-command-reference.html) if your Lambda function uses an alternative trigger, like an S3 or SQS event).
+There are two SAM CLI commands that we could use to test our function - the [`start-api`](https://github.com/kaperys/blog/blob/master/serverless-go-intro/Makefile#L19) command and the [`invoke`](https://github.com/kaperys/blog/blob/master/serverless-go-intro/Makefile#L22) command (there are [more commands available](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-command-reference.html) if your Lambda function uses an alternative trigger, like an S3 or SQS event).
 
 The [`start-api`](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-local-start-api.html) command, according to AWS' documentation:
 
@@ -196,7 +196,7 @@ The [`start-api`](https://docs.aws.amazon.com/serverless-application-model/lates
 
 Essentially `start-api` allows us to spawn a local API Gateway with which we can invoke our Lambda function.
 
-The [`invoke`](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-local-invoke.html) command, according to AWS’ documentation:
+The [`invoke`](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-local-invoke.html) command, according to AWS' documentation:
 
 > Invokes a local Lambda function once and quits after invocation completes.
 > This is useful for developing serverless functions that handle asynchronous events (such as Amazon S3 or Amazon Kinesis events). It can also be useful if you want to compose a script of test cases.

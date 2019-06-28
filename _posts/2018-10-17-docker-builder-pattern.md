@@ -9,11 +9,11 @@ date: 2018-10-17
 
 {{ page.summary }}
 
-Often one of the most challenging aspects of building applications packaged with Docker is the resulting image size. In production you want only your compiled application and runtime dependencies present inside your image — there's no need for development dependencies; such as a compiler, tooling, test files, artifacts, vendor code, etc.
+Often one of the most challenging aspects of building applications packaged with Docker is the resulting image size. In production you want only your compiled application and runtime dependencies present inside your image - there's no need for development dependencies; such as a compiler, tooling, test files, artifacts, vendor code, etc.
 
 Docker 17.05 introduced [multi-stage builds](https://docs.docker.com/develop/develop-images/multistage-build/#use-multi-stage-builds), which allow you to use multiple `FROM` statements in a single Dockerfile. Each `FROM` instruction defines a new base image for the following instructions, and begins a new build stage. Before multi-stage builds it was possible to to achieve the same effect, but the process required 2 Dockerfiles.
 
-Using multi-stage builds allows you to selectively copy files between build stages — this is the basis of the builder pattern.
+Using multi-stage builds allows you to selectively copy files between build stages - this is the basis of the builder pattern.
 
 I've created a small Go sample application we'll use for the purposes of this article (grab the code from GitHub at https://github.com/kaperys/blog/tree/master/docker-builder-pattern). Although in this example we'll be compiling a Go application, some other use cases could be:
 
@@ -110,7 +110,7 @@ We can build the image with the following command:
 docker build -t vision-app .
 ```
 
-Great — this does everything we need. However, the resulting image is unnecessarily large.
+Great - this does everything we need. However, the resulting image is unnecessarily large.
 
 ![920MB Docker image size](/img/docker-builder-pattern/before-image-size.png "'docker image list' result")
 
@@ -212,7 +212,7 @@ docker build -t vision-app .
 
 ![18.2MB Docker image size](/img/docker-builder-pattern/after-image-size.png "'docker image list' result")
 
-The resulting image is only 18.2MB — a huge reduction from our original 920MB!
+The resulting image is only 18.2MB - a huge reduction from our original 920MB!
 
 ## Conclusion
 
