@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Debugging Go using Delve, Docker and VS Code"
-summary: "Debugging a program can often be frustrating. Particularly so when your program is compiled and running inside a Docker container  - — it can seem like you spend more time compiling than actually fixing the bug! Using a debugger can alleviate some of the pain points associated with debugging."
+summary: "Debugging a program can often be frustrating. Particularly so when your program is compiled and running inside a Docker container  - it can seem like you spend more time compiling than actually fixing the bug! Using a debugger can alleviate some of the pain points associated with debugging."
 date: 2019-02-04
 ---
 
@@ -132,7 +132,7 @@ Debugging allows you to step through your program, line by line. Visual Studio C
 
 You're able to step through the program using the controls towards the top of the editor. From left to right, the controls are; continue, step over, step into, step out, restart and stop. Here's what each control does:
 
-- "Continue" (`F5`) skips the current breakpoint and moves to the next one (or allows the program to run as normal if there aren’t any more).
+- "Continue" (`F5`) skips the current breakpoint and moves to the next one (or allows the program to run as normal if there aren't any more).
 - "Step over" (`F10`) jumps from the current line to the next line.
 - "Step into" (`F11`) steps into functions on the current line.
 - "Step out" steps out of the current function and back into the calling function.

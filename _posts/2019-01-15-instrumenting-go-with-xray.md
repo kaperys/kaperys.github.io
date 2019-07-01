@@ -135,7 +135,7 @@ The X-Ray SDK provides an `xray.Capture` function which is used for recording cu
 
 It's also possible to record additional fields of data in segments and subsegments by using annotations and metadata. Annotations are indexed and searchable in the X-Ray console, metadata is not. The X-Ray SDK provides methods for recording key-value pairs of data as both annotations and metadata.
 
-In a [previous article](https://medium.com/@kaperys/create-lean-docker-images-using-the-builder-pattern-37fe2b5d97d4), I created a small Go app which submitted photos taken with your webcam to [AWS' Rekognition](https://aws.amazon.com/rekognition/) API and displayed the results. For the purposes of this article I've made a slight change; instead of taking photos with your webcam, two random images are retrieved from [picsum.photos](https://picsum.photos/).
+In a [previous article](https://kaperys.io/2018/10/17/docker-builder-pattern/), I created a small Go app which submitted photos taken with your webcam to [AWS' Rekognition](https://aws.amazon.com/rekognition/) API and displayed the results. For the purposes of this article I've made a slight change; instead of taking photos with your webcam, two random images are retrieved from [picsum.photos](https://picsum.photos/).
 
 > If you want to follow along with this article you can grab the accompanying code from [GitHub](https://github.com/kaperys/blog/tree/master/instrumenting-go-using-aws-xray).
 
