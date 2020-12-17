@@ -55,4 +55,4 @@ I recently published a wrapper for the Go AWS SDK which allows you to wrap `aws.
 
 ---
 
-This article was originally published on Medium - [https://medium.com/@kaperys/using-localstack-to-test-aws-services-locally-cd863c989c7b](https://medium.com/@kaperys/using-localstack-to-test-aws-services-locally-cd863c989c7b) &middot; Published {{ page.date }}
+This article was originally published on Medium - [https://medium.com/@kaperys/using-localstack-to-test-aws-services-locally-cd863c989c7b](https://medium.com/@kaperys/using-localstack-to-test-aws-services-locally-cd863c989c7b) &middot; Published {{ page.date | date_to_long_string }}

@@ -272,4 +272,4 @@ In this post we've seen how we can use the AWS SAM CLI tool to easily build, tes
 
 ---
 
-This article was originally published on Medium - [https://medium.com/@kaperys/an-introduction-to-serverless-go-applications-using-aws-a258bc2a7b72](https://medium.com/@kaperys/an-introduction-to-serverless-go-applications-using-aws-a258bc2a7b72) &middot; Published {{ page.date }}
+This article was originally published on Medium - [https://medium.com/@kaperys/an-introduction-to-serverless-go-applications-using-aws-a258bc2a7b72](https://medium.com/@kaperys/an-introduction-to-serverless-go-applications-using-aws-a258bc2a7b72) &middot; Published {{ page.date | date_to_long_string }}

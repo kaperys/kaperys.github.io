@@ -13,5 +13,8 @@ kramdown:
 plugins:
   - jekyll-feed
 
+include:
+  - _pages
+
 sass:
   style: compressed

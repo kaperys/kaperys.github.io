@@ -20,7 +20,7 @@ layout: default
     <div class="posts">
         {% for post in site.posts %}
             <div class="post">
-                <h2 class="title">{{ post.title }}</h2>
+                <h2 class="title">{{ post.title }} <span class="subtitle">{{ post.date | date: "%Y/%m/%d" }}</span></h2>
                 <p>{{ post.summary }}</p>
                 <a href="{{ post.url }}" title="{{ post.title }}">Read More &rarr;</a>
             </div>

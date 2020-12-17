@@ -145,4 +145,4 @@ In this article we've seen how Delve and Visual Studio Code could be used to deb
 
 ---
 
-This article was originally published on Medium - [https://medium.com/@kaperys/delve-into-docker-d6c92be2f823](https://medium.com/@kaperys/delve-into-docker-d6c92be2f823) &middot; Published {{ page.date }}
+This article was originally published on Medium - [https://medium.com/@kaperys/delve-into-docker-d6c92be2f823](https://medium.com/@kaperys/delve-into-docker-d6c92be2f823) &middot; Published {{ page.date | date_to_long_string }}

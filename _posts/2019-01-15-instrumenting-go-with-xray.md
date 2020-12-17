@@ -259,4 +259,4 @@ We've seen how quick and easy it is to instrument applications using the AWS X-R
 
 ---
 
-This article was originally published on Medium - [https://medium.com/@kaperys/instrumenting-go-using-aws-x-ray-10952aff00cc](https://medium.com/@kaperys/instrumenting-go-using-aws-x-ray-10952aff00cc) &middot; Published {{ page.date }}
+This article was originally published on Medium - [https://medium.com/@kaperys/instrumenting-go-using-aws-x-ray-10952aff00cc](https://medium.com/@kaperys/instrumenting-go-using-aws-x-ray-10952aff00cc) &middot; Published {{ page.date | date_to_long_string }}
