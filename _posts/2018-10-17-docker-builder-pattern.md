@@ -220,4 +220,4 @@ We've seen how multi-stage builds and the Builder Pattern can be used to drastic
 
 ---
 
-This article was originally published on Medium - [https://medium.com/@kaperys/create-lean-docker-images-using-the-builder-pattern-37fe2b5d97d4](https://medium.com/@kaperys/create-lean-docker-images-using-the-builder-pattern-37fe2b5d97d4) &middot; Published {{ page.date }}
+This article was originally published on Medium - [https://medium.com/@kaperys/create-lean-docker-images-using-the-builder-pattern-37fe2b5d97d4](https://medium.com/@kaperys/create-lean-docker-images-using-the-builder-pattern-37fe2b5d97d4) &middot; Published {{ page.date | date_to_long_string }}

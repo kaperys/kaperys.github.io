@@ -50,7 +50,6 @@ Here's [an example Makefile](https://github.com/kaperys/blog/blob/master/instrum
 
 ```makefile
 .PHONY: xray
-
 xray:
 	docker run --rm \
 		--env AWS_ACCESS_KEY_ID=$$(aws configure get aws_access_key_id) \
@@ -259,4 +258,4 @@ We've seen how quick and easy it is to instrument applications using the AWS X-R
 
 ---
 
-This article was originally published on Medium - [https://medium.com/@kaperys/instrumenting-go-using-aws-x-ray-10952aff00cc](https://medium.com/@kaperys/instrumenting-go-using-aws-x-ray-10952aff00cc) &middot; Published {{ page.date }}
+This article was originally published on Medium - [https://medium.com/@kaperys/instrumenting-go-using-aws-x-ray-10952aff00cc](https://medium.com/@kaperys/instrumenting-go-using-aws-x-ray-10952aff00cc) &middot; Published {{ page.date | date_to_long_string }}
