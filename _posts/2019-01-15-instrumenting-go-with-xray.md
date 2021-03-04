@@ -50,7 +50,6 @@ Here's [an example Makefile](https://github.com/kaperys/blog/blob/master/instrum
 
 ```makefile
 .PHONY: xray
-
 xray:
 	docker run --rm \
 		--env AWS_ACCESS_KEY_ID=$$(aws configure get aws_access_key_id) \
