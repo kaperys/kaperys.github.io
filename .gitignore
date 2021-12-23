@@ -1,5 +1,6 @@
 /node_modules
 /coverage
+/out/
 /.next/
 /build
 npm-debug.log*
