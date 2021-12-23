@@ -15,7 +15,6 @@ type Props = {
 };
 
 const Home: FC<Props> = ({ posts }) => {
-  console.log(content);
   return (
     <>
       <Head>

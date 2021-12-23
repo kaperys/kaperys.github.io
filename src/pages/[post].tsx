@@ -26,7 +26,7 @@ const Post: FC<Props> = ({ post }) => {
       </Head>
 
       <div className="container mx-auto my-12 px-6">
-        <div className="prose prose-slate max-w-none prose-headings:font-mono">
+        <div className="prose prose-slate max-w-none prose-headings:font-mono prose-headings:text-black">
           <h1>{post.title}</h1>
           <p>{post.summary}</p>
           <ReactMarkdown>{post.content || ""}</ReactMarkdown>
