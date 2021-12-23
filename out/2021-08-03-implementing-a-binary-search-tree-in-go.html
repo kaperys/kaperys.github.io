@@ -1,0 +1,93 @@
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width"/><meta charSet="utf-8"/><title>Implementing a binary search tree in Go · Mike Kaperys</title><link rel="canonical" href="https://kaperys.io/2021-08-03-implementing-a-binary-search-tree-in-go"/><meta name="description" content="meta desc test"/><meta name="keywords" content="meta, tags, test"/><meta name="next-head-count" content="6"/><link rel="preload" href="/_next/static/css/b872d751bed4f3e9.css" as="style"/><link rel="stylesheet" href="/_next/static/css/b872d751bed4f3e9.css" data-n-g=""/><noscript data-n-css=""></noscript><script defer="" nomodule="" src="/_next/static/chunks/polyfills-5cd94c89d3acac5f.js"></script><script src="/_next/static/chunks/webpack-514908bffb652963.js" defer=""></script><script src="/_next/static/chunks/framework-91d7f78b5b4003c8.js" defer=""></script><script src="/_next/static/chunks/main-deb592798b94b511.js" defer=""></script><script src="/_next/static/chunks/pages/_app-0bc2070ff58be5f8.js" defer=""></script><script src="/_next/static/chunks/610-0012c10cc745a43b.js" defer=""></script><script src="/_next/static/chunks/pages/%5Bpost%5D-6d33ca590d03e6f5.js" defer=""></script><script src="/_next/static/0vmWJ0gcnFz5IiiRcY-HT/_buildManifest.js" defer=""></script><script src="/_next/static/0vmWJ0gcnFz5IiiRcY-HT/_ssgManifest.js" defer=""></script><script src="/_next/static/0vmWJ0gcnFz5IiiRcY-HT/_middlewareManifest.js" defer=""></script></head><body><div id="__next" data-reactroot=""><div class="container mx-auto my-12 px-6"><div class="prose prose-slate max-w-none prose-headings:font-mono"><h1>Implementing a binary search tree in Go</h1><p>Say you&#x27;re given an unordered list of numbers - 5, 3, 9, 1, 4, 10 - and asked to check for the existence of the number 4; how do you do it? One way could be to iterate though the list, looking for a match, but that wouldn&#x27;t be very efficient. A binary search tree is a space and time efficient method of testing for the existence of a given value. In this post, we&#x27;ll implement a simple example using Go.</p><h2>What is a Binary Search Tree?</h2>
+<p>A binary search tree is a rooted tree data structure in which each node contains a value and up to two child nodes - left and right. A node which contains child nodes stores values greater than it&#x27;s value in the right child, and less than it&#x27;s value in the left node. If we were to draw the list 5, 3, 9, 1, 4, 10 as a tree, it would look like this:</p>
+<pre><code>    5
+   / \
+  3   9
+ / \   \
+1   4  10
+</code></pre>
+<p>In this example, the tree begins with 5. Next in the list is 3, which is less than 5 so we insert a new node to the left of 5. The next value is 9, which is greater than 5, so we insert a new node to the right of 5. The next is 1, which is less than 5, but we already have a node to the left of 5, so we follow the tree, repeating the process, until we find an empty space - and find one under 3, so insert a new node to the left of 3. Next is 4, which is less than 5, but greater than 3, so we add a new node to the right of 3. Lastly, 10 is greater than 5 and greater than 9, so we insert a new node to the right of 9.</p>
+<p>To test for the existence of a value, beginning with the root node, we test if the target value is greater than or less than the value of the current node, following the tree until we either have no more nodes to traverse (in which case we know that the tree does not contain our target value) or we find the value.</p>
+<p>Using our example, if we want to test for the existence of 4, we would first check if the value of the root node is greater than or less than our target value and move left or right accordingly. Since 4 is less then 5 we move to the left and repeat the test. So in order to locate the target value, the nodes we would visit are 5, 3 and 4.</p>
+<p>Inserting into the tree naturally orders the given values, which means searching the tree takes on average around half of the time it would take to linearly search the given unordered list for the target value. The average search time complexity of a binary search tree is O(log n), and the worst case scenario is O(n).</p>
+<h2>A Go implementation</h2>
+<p>In order to implement a binary search tree we&#x27;ll need a Node type and two methods - <code>Insert</code> and <code>Search</code>. We&#x27;ll implement <code>Node</code> as a <code>struct</code> containing the node value, <code>v</code>, and the left (<code>l</code>) and right (<code>r</code>) child nodes.</p>
+<pre><code class="language-golang">type Node struct {
+	v    int
+	l, r *Node
+}
+
+func New(val int) *Node {
+	return &amp;Node{v: val}
+}
+</code></pre>
+<p>The <code>Insert</code> method will traverse the tree, testing and inserting values where necessary. If the <code>Insert</code> method encounters its target value it will return as our implementation will skip duplicate values.</p>
+<pre><code class="language-golang">func (n *Node) Insert(val int) {
+	switch {
+	case val == n.v:
+		return // val already exists - skip
+	case val &lt; n.v: // val is less than the current node value - move left
+		if n.l == nil {
+			// if a left node doesn&#x27;t already exist, insert one and exit
+			n.l = New(val)
+			return
+		}
+
+		// if a left node does exist, repeat the process on that node
+		n.l.Insert(val)
+	case val &gt; n.v: // val is greater than the current node value - move right
+		if n.r == nil {
+			// if a right node doesn&#x27;t already exist, insert one and exit
+			n.r = New(val)
+			return
+		}
+
+		// if a right node does exist, repeat the process on that node
+		n.r.Insert(val)
+	}
+}
+</code></pre>
+<p>The <code>Search</code> method, similarly to the <code>Insert</code> method, recurses though the tree.</p>
+<pre><code class="language-golang">func (n *Node) Search(val int) bool {
+	if n == nil {
+		// if the current node is nil, there are no more nodes to search and
+		// we have not found the target value, so return false
+		return false
+	}
+
+	switch {
+	case val &lt; n.v:
+		// val is less than the current node value - move left
+		return n.l.Search(val)
+	case val &gt; n.v:
+		// val is greater than the current node value - move right
+		return n.r.Search(val)
+	}
+
+	// if we reach this point it means val must be equal to the current node
+	// value, therefore we have found a match, so return true
+	return true
+}
+</code></pre>
+<p>We now have the capability to insert and search for values, so lets implement our earlier example.</p>
+<pre><code class="language-golang">func main() {
+	// create the root node
+	tree := New(5)
+
+	// insert the rest of the values
+	tree.Insert(3)
+	tree.Insert(9)
+	tree.Insert(1)
+	tree.Insert(4)
+	tree.Insert(10)
+
+	// test for existence
+	println(tree.Search(4))
+	println(tree.Search(99))
+}
+</code></pre>
+<p>If we run the example we can see that 4 is indeed present in the list, but 99 is not.</p>
+<pre><code class="language-shell">$ go run main.go
+true
+false
+</code></pre></div></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"post":{"slug":"2021-08-03-implementing-a-binary-search-tree-in-go","date":"03/08/2021, 01:00:00","title":"Implementing a binary search tree in Go","summary":"Say you're given an unordered list of numbers - 5, 3, 9, 1, 4, 10 - and asked to check for the existence of the number 4; how do you do it? One way could be to iterate though the list, looking for a match, but that wouldn't be very efficient. A binary search tree is a space and time efficient method of testing for the existence of a given value. In this post, we'll implement a simple example using Go.","meta":{"description":"meta desc test","keywords":"meta, tags, test"},"content":"\n## What is a Binary Search Tree?\n\nA binary search tree is a rooted tree data structure in which each node contains a value and up to two child nodes - left and right. A node which contains child nodes stores values greater than it's value in the right child, and less than it's value in the left node. If we were to draw the list 5, 3, 9, 1, 4, 10 as a tree, it would look like this:\n\n```\n    5\n   / \\\n  3   9\n / \\   \\\n1   4  10\n```\n\nIn this example, the tree begins with 5. Next in the list is 3, which is less than 5 so we insert a new node to the left of 5. The next value is 9, which is greater than 5, so we insert a new node to the right of 5. The next is 1, which is less than 5, but we already have a node to the left of 5, so we follow the tree, repeating the process, until we find an empty space - and find one under 3, so insert a new node to the left of 3. Next is 4, which is less than 5, but greater than 3, so we add a new node to the right of 3. Lastly, 10 is greater than 5 and greater than 9, so we insert a new node to the right of 9.\n\nTo test for the existence of a value, beginning with the root node, we test if the target value is greater than or less than the value of the current node, following the tree until we either have no more nodes to traverse (in which case we know that the tree does not contain our target value) or we find the value.\n\nUsing our example, if we want to test for the existence of 4, we would first check if the value of the root node is greater than or less than our target value and move left or right accordingly. Since 4 is less then 5 we move to the left and repeat the test. So in order to locate the target value, the nodes we would visit are 5, 3 and 4.\n\nInserting into the tree naturally orders the given values, which means searching the tree takes on average around half of the time it would take to linearly search the given unordered list for the target value. The average search time complexity of a binary search tree is O(log n), and the worst case scenario is O(n).\n\n## A Go implementation\n\nIn order to implement a binary search tree we'll need a Node type and two methods - `Insert` and `Search`. We'll implement `Node` as a `struct` containing the node value, `v`, and the left (`l`) and right (`r`) child nodes.\n\n```golang\ntype Node struct {\n\tv    int\n\tl, r *Node\n}\n\nfunc New(val int) *Node {\n\treturn \u0026Node{v: val}\n}\n```\n\nThe `Insert` method will traverse the tree, testing and inserting values where necessary. If the `Insert` method encounters its target value it will return as our implementation will skip duplicate values.\n\n```golang\nfunc (n *Node) Insert(val int) {\n\tswitch {\n\tcase val == n.v:\n\t\treturn // val already exists - skip\n\tcase val \u003c n.v: // val is less than the current node value - move left\n\t\tif n.l == nil {\n\t\t\t// if a left node doesn't already exist, insert one and exit\n\t\t\tn.l = New(val)\n\t\t\treturn\n\t\t}\n\n\t\t// if a left node does exist, repeat the process on that node\n\t\tn.l.Insert(val)\n\tcase val \u003e n.v: // val is greater than the current node value - move right\n\t\tif n.r == nil {\n\t\t\t// if a right node doesn't already exist, insert one and exit\n\t\t\tn.r = New(val)\n\t\t\treturn\n\t\t}\n\n\t\t// if a right node does exist, repeat the process on that node\n\t\tn.r.Insert(val)\n\t}\n}\n```\n\nThe `Search` method, similarly to the `Insert` method, recurses though the tree.\n\n```golang\nfunc (n *Node) Search(val int) bool {\n\tif n == nil {\n\t\t// if the current node is nil, there are no more nodes to search and\n\t\t// we have not found the target value, so return false\n\t\treturn false\n\t}\n\n\tswitch {\n\tcase val \u003c n.v:\n\t\t// val is less than the current node value - move left\n\t\treturn n.l.Search(val)\n\tcase val \u003e n.v:\n\t\t// val is greater than the current node value - move right\n\t\treturn n.r.Search(val)\n\t}\n\n\t// if we reach this point it means val must be equal to the current node\n\t// value, therefore we have found a match, so return true\n\treturn true\n}\n```\n\nWe now have the capability to insert and search for values, so lets implement our earlier example.\n\n```golang\nfunc main() {\n\t// create the root node\n\ttree := New(5)\n\n\t// insert the rest of the values\n\ttree.Insert(3)\n\ttree.Insert(9)\n\ttree.Insert(1)\n\ttree.Insert(4)\n\ttree.Insert(10)\n\n\t// test for existence\n\tprintln(tree.Search(4))\n\tprintln(tree.Search(99))\n}\n```\n\nIf we run the example we can see that 4 is indeed present in the list, but 99 is not.\n\n```shell\n$ go run main.go\ntrue\nfalse\n```\n"}},"__N_SSG":true},"page":"/[post]","query":{"post":"2021-08-03-implementing-a-binary-search-tree-in-go"},"buildId":"0vmWJ0gcnFz5IiiRcY-HT","isFallback":false,"gsp":true,"scriptLoader":[]}</script></body></html>
