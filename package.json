@@ -7,7 +7,7 @@
     "export": "next export",
     "start": "next start",
     "lint": "next lint",
-    "publish": "next lint && next build && next export && mv out/ docs/"
+    "publish": "next lint && next build && next export && mv out/ docs/ && echo 'kaperys.io' > docs/CNAME && touch docs/.nojekyll"
   },
   "dependencies": {
     "next": "12.0.7",
