@@ -1,19 +1,13 @@
 import { FC } from "react";
 import Link from "next/link";
+import content from "../../content.json";
 
 const Header: FC = () => {
   return (
     <header>
-      <h1 className="font-mono font-bold text-xl">Mike Kaperys</h1>
+      <h1 className="font-mono font-bold text-xl">{content.title}</h1>
       <div className="mt-4 pb-8 inline-block border-b border-gray-200">
-        <p className="text-sm">
-          I&rsquo;m a software engineer from Sheffield, United Kingdom.
-          I&rsquo;m currently working at{" "}
-          <Link href="https://uw.co.uk" passHref>
-            <a title="Utility Warehouse">Utility Warehouse</a>
-          </Link>{" "}
-          building telephony services using Go and Kubernetes.
-        </p>
+        <p className="text-sm">{content.intro}</p>
 
         <nav className="mt-4">
           <ul className="flex space-x-4">

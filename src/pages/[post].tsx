@@ -5,6 +5,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import Head from "next/head";
+import content from "../content.json";
 import { Post } from "../types/post";
 
 type Props = {
@@ -16,7 +17,9 @@ const Post: FC<Props> = ({ post }) => {
   return (
     <>
       <Head>
-        <title>{post.title} &middot; Mike Kaperys</title>
+        <title>
+          {post.title} &middot; {content.title}
+        </title>
         <link rel="canonical" href={"https://kaperys.io/" + post.slug} />
         <meta name="description" content={post.meta?.description} />
         <meta name="keywords" content={post.meta?.keywords} />

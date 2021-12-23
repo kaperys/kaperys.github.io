@@ -5,7 +5,8 @@ import path from "path";
 import matter from "gray-matter";
 import Link from "next/link";
 import Head from "next/head";
-import Header from "../components/layout/header";
+import Header from "../components/layout/Header";
+import content from "../content.json";
 import { Post } from "../types/post";
 
 type Props = {
@@ -14,10 +15,14 @@ type Props = {
 };
 
 const Home: FC<Props> = ({ posts }) => {
+  console.log(content);
   return (
     <>
       <Head>
-        <title>Mike Kaperys</title>
+        <title>{content.title}</title>
+        <link rel="canonical" href="https://kaperys.io" />
+        <meta name="description" content={content.meta.description} />
+        <meta name="keywords" content={content.meta.keywords} />
       </Head>
 
       <div className="container mx-auto my-12 px-6">

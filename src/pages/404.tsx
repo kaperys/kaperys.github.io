@@ -1,13 +1,16 @@
 import { NextPage } from "next";
 import Link from "next/link";
 import Head from "next/head";
-import Header from "../components/layout/header";
+import Header from "../components/layout/Header";
+import content from "../content.json";
 
 const NotFound: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Page Not Found</title>
+        <title>Page Not Found &middot; {content.title}</title>
+        <meta name="description" content={content.meta.description} />
+        <meta name="keywords" content={content.meta.keywords} />
       </Head>
 
       <div className="container mx-auto my-12 px-6">
