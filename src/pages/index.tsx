@@ -1,13 +1,11 @@
 import { FC, ReactNode } from "react";
 import { GetStaticProps } from "next";
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
 import Link from "next/link";
 import Head from "next/head";
 import Header from "../components/layout/Header";
-import content from "../content.json";
+import content from "../content/content.json";
 import { Post } from "../types/post";
+import { WithPosts } from "../content/posts";
 
 type Props = {
   posts: Post[];
@@ -46,27 +44,7 @@ const Home: FC<Props> = ({ posts }) => {
 };
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const files = fs.readdirSync(path.join("posts"));
-
-  const posts = files.map((filename) => {
-    const { data } = matter(
-      fs.readFileSync(path.join("posts", filename), "utf-8")
-    );
-
-    return {
-      slug: filename.split(".")[0],
-      date: data.date.toLocaleDateString("en-GB", {
-        weekday: "long",
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      }),
-      title: data.title,
-      summary: data.summary,
-    };
-  });
-
-  return { props: { posts: posts.reverse() } };
+  return { props: { posts: WithPosts() } };
 };
 
 export default Home;

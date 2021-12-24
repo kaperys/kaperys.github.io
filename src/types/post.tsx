@@ -2,10 +2,10 @@ export type Post = {
   slug: string;
   date: string;
   title: string;
-  meta?: {
+  meta: {
     description: string;
     keywords: string;
   };
   summary: string;
-  content?: string;
+  content: string;
 };

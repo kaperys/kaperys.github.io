@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Link from "next/link";
-import content from "../../content.json";
+import content from "../../content/content.json";
 
 const Header: FC = () => {
   return (

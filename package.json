@@ -4,10 +4,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "node ./scripts/generate-sitemap.mjs",
     "export": "next export",
     "start": "next start",
     "lint": "next lint",
-    "publish": "next lint && next build && next export && rm -r docs/ && mv out/ docs/ && echo 'kaperys.io' > docs/CNAME && touch docs/.nojekyll"
+    "publish": "next lint && next build && next export && rm -r docs/ && mv out/ docs/"
   },
   "dependencies": {
     "next": "12.0.7",

@@ -2,13 +2,13 @@ import { NextPage } from "next";
 import Link from "next/link";
 import Head from "next/head";
 import Header from "../components/layout/Header";
-import content from "../content.json";
+import content from "../content/content.json";
 
 const NotFound: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Page Not Found &middot; {content.title}</title>
+        <title>Not Found &middot; {content.title}</title>
         <meta name="description" content={content.meta.description} />
         <meta name="keywords" content={content.meta.keywords} />
       </Head>
@@ -17,7 +17,7 @@ const NotFound: NextPage = () => {
         <Header />
 
         <div className="mt-8">
-          <h2 className="font-mono font-bold">Page Not Found</h2>
+          <h2 className="font-mono font-bold">Not Found</h2>
           <p className="mt-2">
             If you landed here you might be looking for an older post of mine,
             which live on{" "}
