@@ -38,6 +38,21 @@ const Home: FC<Props> = ({ posts }) => {
             </article>
           ))}
         </div>
+
+        <div className="mt-8 border-t border-gray-200 pt-8">
+          <p className="text-sm text-slate-500">
+            You can find my older posts on{" "}
+            <Link href="https://medium.com/@kaperys" passHref>
+              <a
+                title="Mike Kaperys on Medium"
+                className="hover:underline underline-offset-4 decoration-slate-500"
+              >
+                Medium
+              </a>
+            </Link>
+            .
+          </p>
+        </div>
       </div>
     </>
   );
