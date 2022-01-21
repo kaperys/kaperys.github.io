@@ -1,6 +1,7 @@
 import { FC, ReactNode } from "react";
 import { GetStaticProps, GetStaticPaths } from "next";
 import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 import fs from "fs";
 import path from "path";
 import Head from "next/head";
@@ -29,7 +30,9 @@ const Post: FC<Props> = ({ post }) => {
         <div className="prose prose-slate max-w-none prose-headings:font-mono prose-headings:text-black">
           <h1>{post.title}</h1>
           <p>{post.summary}</p>
-          <ReactMarkdown>{post.content}</ReactMarkdown>
+          <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+            {post.content}
+          </ReactMarkdown>
         </div>
       </div>
     </>
