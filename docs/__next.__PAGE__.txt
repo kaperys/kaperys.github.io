@@ -1,5 +1,0 @@
-1:"$Sreact.fragment"
-2:I[97367,["/_next/static/chunks/42879de7b8087bc9.js"],"OutletBoundary"]
-3:"$Sreact.suspense"
-0:{"buildId":"QDaZ5MIFztqvXoT13yzmK","rsc":["$","$1","c",{"children":[["$","div",null,{"className":"bg-background p-8","children":["$","main",null,{"className":"w-1/2","children":["$","header",null,{"children":[["$","h1",null,{"className":"font-sans text-foreground text-6xl","children":"Mike Kaperys"}],["$","div",null,{"className":"h-px w-1/10 bg-white mt-8 mb-8"}],["$","p",null,{"className":"font-mono","children":"I build high-performing software engineering teams. I'm currently working at Utility Warehouse."}]]}]}]}],null,["$","$L2",null,{"children":["$","$3",null,{"name":"Next.MetadataOutlet","children":"$@4"}]}]]}],"loading":null,"isPartial":false}
-4:null
