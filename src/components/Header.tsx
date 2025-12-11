@@ -1,6 +1,5 @@
 export default function Header({ title }: { title: string }) {
     return <header>
-        <h1 className="font-sans text-foreground text-6xl">{title}</h1>
-        <div className="h-px w-20 bg-white mt-8 mb-8"></div>
+        <h1 className="font-sans text-background bg-foreground text-6xl inline-block uppercase p-2.5 mb-8">{title}</h1>
     </header>
 }
